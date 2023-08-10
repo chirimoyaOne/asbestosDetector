@@ -14,7 +14,7 @@ var map = new mapboxgl.Map({
 // Agregar interacción para mostrar el popup cuando se hace clic en un polígono
 map.on('click', function (e) {
   var features = map.queryRenderedFeatures(e.point, {
-    layers: ['ecija-1k7oma'] // Reemplaza 'NOMBRE_DE_TU_LAYER_ID' con el ID de la capa correspondiente en Mapbox Studio
+    layers: ['Buildings-9qcn2w'] // Reemplaza 'NOMBRE_DE_TU_LAYER_ID' con el ID de la capa correspondiente en Mapbox Studio
   });
 
   if (!features.length) {
