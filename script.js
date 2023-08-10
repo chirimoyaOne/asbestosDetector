@@ -14,7 +14,7 @@ var map = new mapboxgl.Map({
 // Agregar interacción para mostrar el popup cuando se hace clic en un polígono
 map.on('click', function (e) {
   var features = map.queryRenderedFeatures(e.point, {
-    layers: ['Buildings-9qcn2w'] // Reemplaza 'NOMBRE_DE_TU_LAYER_ID' con el ID de la capa correspondiente en Mapbox Studio
+    layers: ['buildings-9qcn2w'] // Reemplaza 'NOMBRE_DE_TU_LAYER_ID' con el ID de la capa correspondiente en Mapbox Studio
   });
 
   if (!features.length) {
@@ -24,17 +24,27 @@ map.on('click', function (e) {
   var feature = features[0];
   var coordinates = e.lngLat;
 
-  var popup = new mapboxgl.Popup()
+  // Crear el contenido del popup
+  var popupContent = '<h3>Refcat: ' + feature.properties.refcat + '</h3><p><strong>Foto: </strong>' + feature.properties.foto + '</p><strong>Link: </strong>' + feature.properties.link_catas + '</p><strong>Fecha: </strong>' + feature.properties.fecha_cons + '</p><strong>Dirección: </strong>' + feature.properties.dire + '</p><strong>Tipo: </strong>' + feature.properties.categ + '</p>';
+
+
+
+
+  // Calcular la longitud del contenido y establecer el max-width del popup
+  var popupWidth = Math.min(300, popupContent.length * 10); // Limitar el ancho máximo a 300 píxeles
+  var popup = new mapboxgl.Popup({ maxWidth: popupWidth })
     .setLngLat(coordinates)
-    .setHTML('<h3>' + feature.properties.refcat + '</h3><p>' + feature.properties.foto + '</p>' + feature.properties.link_catas + '</p>' + feature.properties.fecha_cons + '</p>' + feature.properties.dire + '</p>' + feature.properties.categ + '</p>')
+    .setHTML(popupContent)
     .addTo(map);
+
+
 });
 
 // Cambiar el cursor cuando esté sobre el polígono
-map.on('mouseenter', 'Buildings-9qcn2w', function () {
+map.on('mouseenter', 'buildings-9qcn2w', function () {
   map.getCanvas().style.cursor = 'pointer';
 });
 
-map.on('mouseleave', 'Buildings-9qcn2w', function () {
+map.on('mouseleave', 'buildings-9qcn2w', function () {
   map.getCanvas().style.cursor = '';
 });
