@@ -26,7 +26,7 @@ map.on('click', function (e) {
 
   var popup = new mapboxgl.Popup()
     .setLngLat(coordinates)
-    .setHTML('<h3>' + feature.properties.areaValue + '</h3><p>' + feature.properties.localId + '</p>')
+    .setHTML('<h3>' + feature.properties.refcat + '</h3><p>' + feature.properties.foto + '</p>' + feature.properties.link_catas + '</p>' + feature.properties.fecha_cons + '</p>' + feature.properties.dire + '</p>' + feature.properties.categ + '</p>')
     .addTo(map);
 });
 
