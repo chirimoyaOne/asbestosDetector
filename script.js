@@ -31,10 +31,10 @@ map.on('click', function (e) {
 });
 
 // Cambiar el cursor cuando esté sobre el polígono
-map.on('mouseenter', 'ecija-1k7oma', function () {
+map.on('mouseenter', 'Buildings-9qcn2w', function () {
   map.getCanvas().style.cursor = 'pointer';
 });
 
-map.on('mouseleave', 'ecija-1k7oma', function () {
+map.on('mouseleave', 'Buildings-9qcn2w', function () {
   map.getCanvas().style.cursor = '';
 });
